@@ -13,6 +13,11 @@ view: event_types {
     sql: ${TABLE}.event ;;
   }
 
+  dimension: name {
+    type: string
+    sql: CONCAT(${TABLE}.category, " - ", ${TABLE}.event) ;;
+  }
+
   dimension: event_properties {
     hidden: yes
     sql: ${TABLE}.event_properties ;;

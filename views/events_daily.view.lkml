@@ -156,9 +156,8 @@ view: events_daily {
             True)) ;;
   }
 
-
   measure: count_sessions_event1 {
-    label: "Step 1"
+    label: "{{ _filters['event_types.name'] }}"
     type: count
 
     filters: {
@@ -168,7 +167,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event2 {
-    label: "Step 2"
+    label: "{{ _filters['event_2.name'] }}"
     type: count
     description: "Only includes sessions which also completed event 1"
 
@@ -179,7 +178,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event3 {
-    label: "Step 3"
+    label: "{{ _filters['event_3.name'] }}"
     type: count
     description: "Only includes sessions which also completed up to event 2"
 
@@ -190,7 +189,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event4 {
-    label: "Step 4"
+    label: "{{ _filters['event_4.name'] }}"
     type: count
     description: "Only includes sessions which also completed up to event 3"
 

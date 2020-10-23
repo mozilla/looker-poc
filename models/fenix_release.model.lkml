@@ -39,14 +39,10 @@ explore: funnel_analysis {
   always_filter: {
     filters: [
       submission_date: "1 year",
-      event_types.category: "events",
-      event_types.event: "app^_opened^_all^_startup",
-      event_2.category: "events",
-      event_2.event: "search^_bar^_tapped",
-      event_3.category: "events",
-      event_3.event: "search^_bar^_tapped",
-      event_4.category: "events",
-      event_4.event: "search^_bar^_tapped"
+      event_types.name: "events - app^_opened^_all^_startup",
+      event_2.name: "events - search^_bar^_tapped",
+      event_3.name: "events - search^_bar^_tapped",
+      event_4.name: "events - search^_bar^_tapped"
     ]
   }
 }

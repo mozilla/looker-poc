@@ -156,8 +156,38 @@ view: events_daily {
             True)) ;;
   }
 
+  measure: total_user_days {
+    type: count
+    hidden: yes
+  }
+
+  measure: fraction_sessions_event1 {
+    label: "Fraction Completed Funnel Step 1"
+    type: number
+    sql: COALESCE(${count_sessions_event1}, 0) / COALESCE(${total_user_days}, 0) ;;
+  }
+
+  measure: fraction_sessions_event1_ci {
+    label: "Fraction Sessions Event 1 Upper CI"
+    type: number
+    hidden: yes
+    sql: 1.96 * SQRT((${fraction_sessions_event1} * (1 - ${fraction_sessions_event1})) / ${total_user_days}) ;;
+  }
+
+  measure: fraction_sessions_event1_upper_ci {
+    label: "Fraction Sessions Event 1 Upper CI"
+    type: number
+    sql: ${fraction_sessions_event1} + ${fraction_sessions_event1_ci} ;;
+  }
+
+  measure: fraction_sessions_event1_lower_ci {
+    label: "Fraction Sessions Event 1 Lower CI"
+    type: number
+    sql: ${fraction_sessions_event1} - ${fraction_sessions_event1_ci} ;;
+  }
+
   measure: count_sessions_event1 {
-    label: "{{ _filters['event_types.name'] }}"
+    label: "Funnel Step 1"#"{{ _filters['event_types.name'] }}"
     type: count
 
     filters: {
@@ -167,7 +197,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event2 {
-    label: "{{ _filters['event_2.name'] }}"
+    label: "Funnel Step 2"#"{{ _filters['event_2.name'] }}"
     type: count
     description: "Only includes sessions which also completed event 1"
 
@@ -178,7 +208,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event3 {
-    label: "{{ _filters['event_3.name'] }}"
+    label: "Funnel Step 3"#"{{ _filters['event_3.name'] }}"
     type: count
     description: "Only includes sessions which also completed up to event 2"
 
@@ -189,7 +219,7 @@ view: events_daily {
   }
 
   measure: count_sessions_event4 {
-    label: "{{ _filters['event_4.name'] }}"
+    label: "Funnel Step 4"#"{{ _filters['event_4.name'] }}"
     type: count
     description: "Only includes sessions which also completed up to event 3"
 

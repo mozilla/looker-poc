@@ -10,6 +10,10 @@ datagroup: fenix_release_default_datagroup {
 
 persist_with: fenix_release_default_datagroup
 
+explore: user_activity {
+
+}
+
 # should use this next time: https://help.looker.com/hc/en-us/articles/360048648594-Filtering-a-View-Using-a-Field-from-Another-View-without-Joining-Views
 explore: funnel_analysis {
   from: events_daily

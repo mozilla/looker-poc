@@ -86,4 +86,15 @@ view: user_activity {
       value: "yes"
     }
   }
+
+  dimension: intensity {
+    type: number
+    sql: BIT_COUNT(mozfun.bits28.range(${TABLE}.days_seen_bits, -13 + 0, 7)) ;;
+  }
+
+  measure: average_intensity {
+    label: "Average Intensity"
+    type: average
+    sql: ${intensity} ;;
+  }
 }

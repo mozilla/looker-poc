@@ -14,6 +14,12 @@ explore: user_activity {
 
 }
 
+explore: one_day_cls {
+  from: baseline_clients_last_seen_2
+  hidden: yes
+  sql_always_where: submission_date = DATE_SUB(current_date, INTERVAL 7 DAY) ;;
+}
+
 explore: metrics_v1_schema {
   hidden: yes
   sql_always_where: column_name = 'metrics' AND data_type = 'INT64' AND field_path NOT LIKE '%labeled%';;

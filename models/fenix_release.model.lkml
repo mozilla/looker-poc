@@ -14,6 +14,20 @@ explore: user_activity {
 
 }
 
+explore: metrics_v1_schema {
+  hidden: yes
+  sql_always_where: column_name = 'metrics' AND data_type = 'INT64' AND field_path NOT LIKE '%labeled%';;
+}
+
+explore: metrics {
+  always_filter: {
+    filters: [
+      submission_date: "1 year",
+      metric: ""
+    ]
+  }
+}
+
 # should use this next time: https://help.looker.com/hc/en-us/articles/360048648594-Filtering-a-View-Using-a-Field-from-Another-View-without-Joining-Views
 explore: funnel_analysis {
   from: events_daily

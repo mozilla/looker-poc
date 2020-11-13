@@ -29,7 +29,19 @@ explore: metrics {
   always_filter: {
     filters: [
       submission_date: "1 year",
-      metric: ""
+      metric: "",
+      metrics.client_aggregation_type: "sum"
+    ]
+  }
+}
+
+explore: derived_per_client_aggregate {
+  always_filter: {
+    filters: [
+      submission_date: "1 year",
+      metric: "",
+      client_aggregation_type: "sum",
+      daily_aggregation_type: "max"
     ]
   }
 }

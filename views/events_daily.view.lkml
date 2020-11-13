@@ -17,6 +17,8 @@ view: events_daily {
     sql: ${TABLE}.app_channel ;;
   }
 
+  #dimension:  {}
+
   dimension: app_display_version {
     type: string
     sql: ${TABLE}.app_display_version ;;

@@ -1,4 +1,4 @@
-view: metrics {
+view: per_day_client_aggregate {
   sql_table_name: `moz-fx-data-bq-looker-poc.org_mozilla_firefox.metrics`
     ;;
 
@@ -239,5 +239,10 @@ view: metrics {
     sql: {% parameter client_aggregation_type %}(${TABLE}.{% parameter metric %}) ;;
     label_from_parameter: metric
     type: number
+  }
+
+  measure: per_day_aggregate {
+    sql: ${client_aggregate}  ;;
+    type: sum
   }
 }

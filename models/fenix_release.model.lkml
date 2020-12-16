@@ -82,3 +82,8 @@ explore: funnel_analysis {
     ]
   }
 }
+
+
+explore: growth_accounting {
+
+}
